@@ -1,0 +1,6 @@
+apple,guava,pomegranate,pip
+4
+3 11
+1 20
+8 0
+2 18
