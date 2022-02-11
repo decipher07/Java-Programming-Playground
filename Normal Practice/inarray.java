@@ -16,7 +16,7 @@ public class inarray {
             if ( newStringCharacter[i] == ch )
                 newStringCharacter[i] = (char) (whichChange+'a') ;
 
-        // System.out.println(Arrays.toString(newStringCharacter));
+        System.out.println(Arrays.toString(newStringCharacter));
     }
 
     public static int numberOfConsonants ( String str )
