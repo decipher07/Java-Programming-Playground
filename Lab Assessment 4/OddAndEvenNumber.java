@@ -70,8 +70,14 @@ public class OddAndEvenNumber {
         OddNumberThread t1 = new OddNumberThread(number);
         EvenNumberThread t2 = new EvenNumberThread(number);
 
-        t1.start();
-        t2.start();
+        try {
+            t1.start();
+            t1.join();
+            t2.start();
+            t2.join();
+        } catch ( Exception e ){
+            System.out.println(e);
+        }
 
         input.close();
     }
