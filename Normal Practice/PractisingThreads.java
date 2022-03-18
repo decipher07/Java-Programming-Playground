@@ -123,6 +123,98 @@ class Mythread2 extends Thread {
     }
 }
 
+
+class ClassA extends Thread{
+	public void run() {
+		System.out.println("Start Thread A ....");
+		for(int i = 1; i <= 5; i++) {
+			System.out.println("From Thread A: i = "+ i);
+		}
+		System.out.println("... Exit Thread A");
+	}
+}
+
+class ClassB extends Thread{
+public void run() {
+	System.out.println("Start Thread B ....");
+	for(int j = 1; j <= 5; j++) {
+		System.out.println("From Thread B: j = "+ j);
+	}
+	System.out.println("... Exit Thread B");
+	}
+}
+
+class ClassC extends Thread{
+	public void run() {
+	System.out.println("Start Thread C ....");
+	for(int k = 1; k <= 5; k++) {
+		System.out.println("From Thread C: k = "+ k);
+	}
+	System.out.println("... Exit Thread C");
+	}
+}
+
+
+class Q {			// Q is a class containing two parallel processes
+    int n;
+    boolean flag = false;
+//PRODUCER
+    synchronized void put( int n) {	// Produce a value
+        if(flag) {							// Entry	      	                      
+           try { wait( );}  
+           catch(InterruptedException e){
+                System.out.println(e);
+           }		// to the		      
+        }							// critical section	                              
+                                                                                      
+                    this.n = n;								                                      
+            System.out.println( "Produce :" + n);			// Critical Section           
+                                                                                      
+            flag = true;						// Exit from the	                      
+            notify( );							// critical section
+        }
+//CONSUMER
+       synchronized int get( ) {		// Consume a value
+        if(! flag) {						// Entry		                          
+          try { wait( );}  catch(InterruptedException e){
+            System.out.println(e);
+          }		// to the		      
+        }							// critical section	                              
+                                                                                      
+        System.out.println( "Consume :" + n);			// Critical Section           												                   
+                                                                                      
+        flag = false;						// Exit from the	                      
+        notify( );							// critical	// section                         	
+             return( n );						
+    }
+}
+
+class Producer implements Runnable  {	// Thread for Producer process 
+         Q  q;
+     Producer ( Q q ) 	{  	// constructor
+     this.q =q;
+     new Thread (this).start ( ) ;		// Producer process is started 
+    }
+
+   public void run( ) { 		// infinite running  thread for Producer 
+    int i = 0;
+    while (true ) 	
+        q.put ( i++ );
+       }
+    }
+
+class Consumer implements Runnable { 	// Thread for consumer process
+    Q q;
+   Consumer (Q q )	{ 	          // Constructor 
+   this.q  = q;
+   new Thread (this).start ( );
+    }
+
+ public void run( ) {		// infinite running thread for Consumer 
+ while (true) 
+    q.get ( );
+    }
+}
 public class PractisingThreads {
     public static void main(String[] args) throws InterruptedException {
         /*
@@ -175,7 +267,7 @@ public class PractisingThreads {
          * for (int i = 11; i < 20; i++)
          * System.out.println(i);
          * System.out.println("Main thread");
-         */
+         
         Mythread1 t1 = new Mythread1();
         Mythread2 t2 = new Mythread2();
         Mythread1.m1 = Thread.currentThread();
@@ -200,5 +292,22 @@ public class PractisingThreads {
         for (int i = 10; i < 15; i++)
             System.out.println(i * 2);
         System.out.println("Main thread");
+    */
+        
+        // ClassA t1 = new ClassA();
+        // ClassB t2 = new ClassB();
+        // ClassC t3 = new ClassC();
+
+        // t3.setPriority(Thread.MAX_PRIORITY);
+        // t2.setPriority(t2.getPriority() + 1);
+        // t1.setPriority(Thread.MIN_PRIORITY);
+
+        // t1.start(); t2.start(); t3.start();
+        // System.out.println("... End of executuion ");
+
+        Q q = new Q( );		// an instance of parallel processes  is created
+		new Producer(q) ;			// Run the thread for producer 
+		new Consumer (q);
+
     }
 }
