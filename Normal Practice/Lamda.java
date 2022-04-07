@@ -1,6 +1,7 @@
 import java.util.*;
 interface Drawable {
-    public void draw();
+    public int draw(String name);
+    // public void change();
 }
 
 interface Sayable {
@@ -14,23 +15,30 @@ interface Addable {
 public class Lamda {
     public static void main(String[] args) {
 
-        Stack < String > st = new Stack<>();
-        st.push("Geeks");
-        st.push("Geeasdfasdfks");
-        st.push("Geekfasdf");
-        st.push("Gsafasdfasfdeeks");
+        Drawable d = (String x) -> {
+            System.out.println("hellow");
+            return -1;
+        };
 
-        Iterator <String> itr = st.iterator();
+        d.draw("asdfaFs");
 
-        while ( itr.hasNext())
-            System.out.print( itr.next() + " " );
+        // Stack < String > st = new Stack<>();
+        // st.push("Geeks");
+        // st.push("Geeasdfasdfks");
+        // st.push("Geekfasdf");
+        // st.push("Gsafasdfasfdeeks");
 
-        st.pop();
+        // Iterator <String> itr = st.iterator();
 
-        Iterator < String > itr1 = st.iterator();
+        // while ( itr.hasNext())
+        //     System.out.print( itr.next() + " " );
 
-        while ( itr1.hasNext() )
-            System.out.print( itr1.next() + " ");
+        // st.pop();
+
+        // Iterator < String > itr1 = st.iterator();
+
+        // while ( itr1.hasNext() )
+        //     System.out.print( itr1.next() + " ");
 
         // LinkedList < Integer > ll = new LinkedList<>();
         // for ( int i = 1 ; i < 5; i++ )

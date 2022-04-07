@@ -12,7 +12,7 @@ class BusTicket {
     synchronized void registerSeat (){
         if ( !isAvailable ){
             try {
-                System.out.println("Waiting for the Seats to be released. Your Process is still in the queue!");
+                System.out.println("Waiting for the Seats to be released. Your Process is still in the queue!" + Thread.currentThread());
                 wait();
             } catch ( InterruptedException e ){
                 System.out.println(e);
@@ -22,7 +22,7 @@ class BusTicket {
         // Deducting the seats from the bus registrations
         this.seats--;
         isAvailable = true;
-        System.out.println("You have successfully registered a seat here!");
+        System.out.println("You have successfully registered a seat here!" + Thread.currentThread());
         notifyAll();
 
     }
@@ -30,7 +30,7 @@ class BusTicket {
     synchronized void allotSeat ( int numberOfSeats ){
         if ( isAvailable ){
             try {
-                System.out.println("Waiting for the Seats to be deducted. Your Process is still in the queue!");
+                System.out.println("Waiting for the Seats to be deducted. Your Process is still in the queue!" + Thread.currentThread());
                 wait();
             } catch ( InterruptedException e ){
                 System.out.println(e);
@@ -46,7 +46,7 @@ class BusTicket {
     synchronized void displaySeats (){
         if ( !isAvailable ){
             try {
-                System.out.println("Waiting for the Seats to be released. Your Process is still in the queue!");
+                System.out.println("Waiting for the Seats to be released. Your Process is still in the queue!" + Thread.currentThread());
                 wait();
             } catch ( InterruptedException e ){
                 System.out.println(e);

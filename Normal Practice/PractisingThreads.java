@@ -25,7 +25,7 @@ class Multithread {
 class Table {
     synchronized void printTable(int n) {// method not synchronized
         for (int i = 1; i <= 5; i++) {
-            System.out.println(n * i);
+            System.out.println("PRINTING FOR i " + i );
             try {
                 Thread.sleep(400);
             } catch (Exception e) {
@@ -123,7 +123,6 @@ class Mythread2 extends Thread {
     }
 }
 
-
 class ClassA extends Thread{
 	public void run() {
 		System.out.println("Start Thread A ....");
@@ -153,7 +152,6 @@ class ClassC extends Thread{
 	System.out.println("... Exit Thread C");
 	}
 }
-
 
 class Q {			// Q is a class containing two parallel processes
     int n;
@@ -215,6 +213,46 @@ class Consumer implements Runnable { 	// Thread for consumer process
     q.get ( );
     }
 }
+
+class TestSleepMethod1 extends Thread{
+    public void run(){
+    for(int i=1;i<5;i++){
+    try{Thread.sleep(500);}catch(InterruptedException e){System.out.println(e);}
+    System.out.println(i);
+    }
+    }
+}
+
+class Counter{
+    int count;
+    public void increment(){
+    count++;
+    }
+    }
+class Mythread11 extends Thread{
+    Counter c;
+    Mythread11(Counter c){
+    this.c=c;
+    }
+    public void run(){
+    for(int i=0;i<10000;i++){
+    c.increment();
+    }
+   }
+}
+class Mythread21 extends Thread{
+    Counter c;
+    Mythread21(Counter c){
+    this.c=c;
+    }
+   
+    public void run(){
+    for(int i=0;i<10000;i++){
+    c.increment();
+    }
+    }
+   }
+
 public class PractisingThreads {
     public static void main(String[] args) throws InterruptedException {
         /*
@@ -292,7 +330,7 @@ public class PractisingThreads {
         for (int i = 10; i < 15; i++)
             System.out.println(i * 2);
         System.out.println("Main thread");
-    */
+    
         
         // ClassA t1 = new ClassA();
         // ClassB t2 = new ClassB();
@@ -305,9 +343,32 @@ public class PractisingThreads {
         // t1.start(); t2.start(); t3.start();
         // System.out.println("... End of executuion ");
 
-        Q q = new Q( );		// an instance of parallel processes  is created
-		new Producer(q) ;			// Run the thread for producer 
-		new Consumer (q);
+        // Q q = new Q( );		// an instance of parallel processes  is created
+		// new Producer(q) ;			// Run the thread for producer 
+		// new Consumer (q);
+    */
+            // TestSleepMethod1 t1 = new TestSleepMethod1();
+            // TestSleepMethod1 t2 = new TestSleepMethod1();
 
+            // t1.start();
+            // t1.join();
+            // t2.start();
+            // Table obj = new Table();//only one object
+            // MyThread12 t1 = new MyThread12(obj);
+            // MyThread2 t2 = new MyThread2(obj);
+            // t1.start();
+            // t2.start(); 
+            // Counter c=new Counter();
+            // Mythread11 t1=new Mythread11(c);
+            // Mythread21 t2=new Mythread21(c);
+            // t1.start();
+            // t2.start();
+            // t1.join();
+            // t2.join();
+            // System.out.println("Count= "+c.count);
+
+            Multithread t1 = new Multithread();
+            t1.increment();
+            t1.increment();
     }
 }
