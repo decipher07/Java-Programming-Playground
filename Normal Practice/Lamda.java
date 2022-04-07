@@ -1,4 +1,3 @@
-import java.util.*;
 interface Drawable {
     public int draw(String name);
     // public void change();
