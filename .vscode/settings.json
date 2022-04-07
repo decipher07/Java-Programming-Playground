@@ -7,6 +7,11 @@
         "Lab Assessment 2",
         "Lab Assessment 3",
         "Theory Assessment 2",
-        "Lab Assessment 4"
+        "Lab Assessment 4",
+        "JavaFX Practise"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/usr/share/openjfx/lib/*.jar"
     ]
 }
