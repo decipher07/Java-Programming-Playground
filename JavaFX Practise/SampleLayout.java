@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.concurrent.Callable;
 
-import javafx.animation.AnimationTimer;
+// import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -12,21 +12,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+// import javafx.scene.layout.BackgroundImage;
+// import javafx.scene.layout.BackgroundPosition;
+// import javafx.scene.layout.BackgroundRepeat;
+// import javafx.scene.layout.BackgroundSize;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;  
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+// import javafx.scene.paint.Color;
+// import javafx.scene.shape.Circle;
+// import javafx.scene.shape.Line;
+// import javafx.scene.shape.Polygon;
+// import javafx.scene.shape.Rectangle;
+// import javafx.scene.text.Font;
+// import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -43,7 +42,7 @@ public class SampleLayout extends Application {
         
         //Setting the position of the image 
         imageView.setX(50); 
-        imageView.setY(125); 
+        imageView.setY(270); 
         
         //setting the fit height and width of the image view 
         imageView.setFitHeight(200); 
@@ -54,7 +53,7 @@ public class SampleLayout extends Application {
         imageView.setPreserveRatio(true);  
         
         TranslateTransition translate = new TranslateTransition();
-        translate.setByX(400);
+        translate.setByX(600);
         translate.setDuration(Duration.millis(5000));
         translate.setCycleCount(500);
         translate.setNode(imageView);
@@ -67,8 +66,8 @@ public class SampleLayout extends Application {
         ImageView imageView12 = new ImageView(image12); 
         
         //Setting the position of the image 
-        imageView12.setX(300); 
-        imageView12.setY(125); 
+        imageView12.setX(1000); 
+        imageView12.setY(270);
         
         //setting the fit height and width of the image view 
         imageView12.setFitHeight(200); 
@@ -79,7 +78,7 @@ public class SampleLayout extends Application {
         imageView12.setPreserveRatio(true);  
         
         TranslateTransition translate12 = new TranslateTransition();
-        translate12.setByX(-300);
+        translate12.setByX(-600);
         translate12.setDuration(Duration.millis(5000));
         translate12.setCycleCount(500);
         translate12.setNode(imageView12);
@@ -102,11 +101,20 @@ public class SampleLayout extends Application {
 
         //Creating a Group object  
         Group root = new Group();  
-        // root.setId("pane");
+        
         //Creating a scene object 
-        Scene scene = new Scene(root, 600, 1200);
+        Scene scene = new Scene(root, 1500, 500);
 
-        scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
+        Image background = new Image(new FileInputStream("/home/nopc/Desktop/Github-Clones/Java-Programming/JavaFX Practise/landscape.jpeg"));  
+        
+        //Setting the image view 
+        ImageView backImage = new ImageView(background); 
+        backImage.setFitWidth(1500);
+        backImage.setFitHeight(500);
+
+        root.getChildren().add(backImage);
+
+        // scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
 
         //Setting title to the Stage 
         stage.setTitle("Loading an image");
@@ -134,7 +142,7 @@ public class SampleLayout extends Application {
                     
                     
                     try {
-                        String path = "/home/nopc/Downloads/Songs/Anki - Adrift.mp3";  
+                        String path = "/home/nopc/Downloads/Songs/Zedd.mp3";  
               
                         //Instantiating Media class  
                         Media media = new Media(new File(path).toURI().toString());  
@@ -144,6 +152,8 @@ public class SampleLayout extends Application {
                           
                         //by setting this property to true, the audio will be played   
                         mediaPlayer.setAutoPlay(true);  
+
+                        mediaPlayer.play();
                         
                         //Creating an image 
                         Image image = new Image(new FileInputStream("/home/nopc/Desktop/Github-Clones/Java-Programming/JavaFX Practise/boom.jpeg"));  
@@ -152,8 +162,8 @@ public class SampleLayout extends Application {
                         ImageView imageView = new ImageView(image); 
     
                         //Setting the position of the image 
-                        imageView.setX(220); 
-                        imageView.setY(150); 
+                        imageView.setX(550); 
+                        imageView.setY(300); 
     
                         //setting the fit height and width of the image view 
                         imageView.setFitHeight(50); 
