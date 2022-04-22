@@ -9,7 +9,8 @@
         "Theory Assessment 2",
         "Lab Assessment 4",
         "JavaFX Practise",
-        "Lab Assessment 5"
+        "Lab Assessment 5",
+        "JDBC Sample"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
