@@ -7,6 +7,11 @@
         <servlet-name>logout</servlet-name>
         <servlet-class>Logout</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>logoutLogic</servlet-name>
+        <servlet-class>LogoutLogic</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>login</servlet-name>
@@ -16,6 +21,11 @@
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/servlet2</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>logoutLogic</servlet-name>
+        <url-pattern>/servlet3</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -16,7 +16,8 @@ public class Login extends HttpServlet {
         String uname = request.getParameter("userName");
         String pass = request.getParameter("userPass");
 
-
+        Cookie ck = new Cookie("uname", uname);
+        response.addCookie(ck);
 
         RequestDispatcher rd =  request.getRequestDispatcher("servlet2");
         rd.forward(request, response);
