@@ -10,7 +10,8 @@
         "Lab Assessment 4",
         "JavaFX Practise",
         "Lab Assessment 5",
-        "JDBC Sample"
+        "JDBC Sample",
+        "Servlets Practise"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
